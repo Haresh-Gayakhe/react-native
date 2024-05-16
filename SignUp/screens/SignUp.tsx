@@ -14,7 +14,7 @@ import {
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {appColor} from '../constants/constants';
-import { NavigationProp } from '@react-navigation/native';
+import {NavigationProp} from '@react-navigation/native';
 
 const Validation = Yup.object().shape({
   email: Yup.string().email('Enter Valid mail').required('Email is required'),
@@ -27,7 +27,7 @@ const Validation = Yup.object().shape({
     .oneOf([Yup.ref('password')], 'Password must be matched'),
 });
 
-const SignUp = ({navigation}:{navigation:NavigationProp<any>}) => {
+const SignUp = ({navigation}: {navigation: NavigationProp<any>}) => {
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -36,7 +36,9 @@ const SignUp = ({navigation}:{navigation:NavigationProp<any>}) => {
   }, [isChecked]);
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled" style={{backgroundColor:appColor}}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      style={{backgroundColor: appColor}}>
       <View style={styles.appName}>
         <Text style={styles.appNameText}>Coffee Cozy</Text>
       </View>
@@ -144,10 +146,11 @@ const SignUp = ({navigation}:{navigation:NavigationProp<any>}) => {
               }}>
               <Text style={styles.btnText}>Submit</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.goToLogin}
-            onPress={() => {
-                navigation.navigate('Login')
-            }}>
+            <TouchableOpacity
+              style={styles.goToLogin}
+              onPress={() => {
+                navigation.navigate('Login');
+              }}>
               <Text style={styles.goToLoginText}>Having an Account</Text>
             </TouchableOpacity>
           </View>
@@ -211,16 +214,16 @@ const styles = StyleSheet.create({
   },
   terms: {
     fontSize: hp(1.5),
-    color:'black'
+    color: 'black',
   },
-  goToLogin:{
+  goToLogin: {
     alignSelf: 'flex-end',
     marginRight: wp(15),
     marginVertical: hp(1),
   },
   goToLoginText: {
     fontSize: hp(1.5),
-    textDecorationLine:'underline',
-    color:'black'
+    textDecorationLine: 'underline',
+    color: 'black',
   },
 });
