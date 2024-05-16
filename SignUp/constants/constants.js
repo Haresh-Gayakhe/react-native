@@ -1,0 +1,1 @@
+export const appColor = '#e8c48c';
