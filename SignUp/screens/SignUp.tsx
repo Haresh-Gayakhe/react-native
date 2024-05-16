@@ -14,7 +14,7 @@ import {
 import * as Yup from 'yup';
 import {Formik} from 'formik';
 import {appColor} from '../constants/constants';
-import {CheckBox} from 'react-native-elements';
+import { NavigationProp } from '@react-navigation/native';
 
 const Validation = Yup.object().shape({
   email: Yup.string().email('Enter Valid mail').required('Email is required'),
@@ -27,7 +27,7 @@ const Validation = Yup.object().shape({
     .oneOf([Yup.ref('password')], 'Password must be matched'),
 });
 
-const SignUp = () => {
+const SignUp = ({navigation}:{navigation:NavigationProp<any>}) => {
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -36,7 +36,7 @@ const SignUp = () => {
   }, [isChecked]);
 
   return (
-    <ScrollView keyboardShouldPersistTaps="handled">
+    <ScrollView keyboardShouldPersistTaps="handled" style={{backgroundColor:appColor}}>
       <View style={styles.appName}>
         <Text style={styles.appNameText}>Coffee Cozy</Text>
       </View>
@@ -144,7 +144,10 @@ const SignUp = () => {
               }}>
               <Text style={styles.btnText}>Submit</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.goToLogin}>
+            <TouchableOpacity style={styles.goToLogin}
+            onPress={() => {
+                navigation.navigate('Login')
+            }}>
               <Text style={styles.goToLoginText}>Having an Account</Text>
             </TouchableOpacity>
           </View>
